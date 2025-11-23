@@ -1,1 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Malla Interactiva — Diseño Curricular</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Malla Interactiva — Plan (ejemplo)</h1>
+    <div class="controls">
+      <button id="resetBtn" title="Borrar progreso">Borrar progreso</button>
+      <button id="exportBtn" title="Exportar progreso">Exportar progreso</button>
+      <button id="importBtn" title="Importar progreso">Importar progreso</button>
+      <input id="importInput" type="file" accept=".json" style="display:none" />
+    </div>
+  </header>
+
+  <main>
+    <section id="mallaContainer" class="malla-container"></section>
+  </main>
+
+  <footer>
+    <small>Click en una casilla para marcar/ desmarcar como APROBADA. El estado se guarda en tu navegador.</small>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
 
