@@ -1,1 +1,180 @@
+/* style.css */
+
+/* Reset mínimo */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root{
+  --bg: #faf7ff;
+  --violet-1: #6b21a8; /* encabezado ciclo */
+  --violet-2: #7b2cbf; /* tarjetas */
+  --violet-3: #a78bfa; /* borde / glow */
+  --text: #222;
+  --muted: #666;
+  --white: #ffffff;
+  --card-shadow: 0 6px 16px rgba(15,10,20,0.08);
+}
+
+body{
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(180deg, var(--bg), #f1ecff 100%);
+  color: var(--text);
+  min-height:100vh;
+  padding: 24px;
+}
+
+/* Header */
+header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 12px;
+  margin-bottom:18px;
+}
+header h1{
+  font-size:1.25rem;
+  color: var(--violet-1);
+}
+.controls { display:flex; gap:8px; align-items:center; }
+
+.controls button{
+  background:var(--violet-2);
+  color:var(--white);
+  border:none;
+  padding:8px 12px;
+  border-radius:10px;
+  cursor:pointer;
+  box-shadow: var(--card-shadow);
+  transition: transform .12s ease, opacity .12s ease;
+  font-size:0.9rem;
+}
+.controls button:hover{ transform: translateY(-2px); opacity:0.95; }
+.controls button#resetBtn{ background:#4c1d95; }
+
+/* Malla: los ciclos en fila */
+.malla-container{
+  display:flex;
+  gap:18px; /* separación entre columnas (ciclos) */
+  align-items:flex-start;
+  overflow-x:auto;
+  padding-bottom:12px;
+}
+
+/* Cada columna de ciclo */
+.ciclo{
+  min-width: 220px;
+  max-width: 260px;
+  background: linear-gradient(180deg, rgba(123,44,191,0.07), rgba(123,44,191,0.03));
+  border-radius:14px;
+  padding:12px;
+  box-shadow: var(--card-shadow);
+  border: 1px solid rgba(123,44,191,0.06);
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+/* Encabezado del ciclo */
+.ciclo-header{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  align-items:flex-start;
+}
+.ciclo-title{
+  background: linear-gradient(90deg,var(--violet-1),var(--violet-2));
+  color:white;
+  padding:6px 10px;
+  border-radius:10px;
+  font-weight:700;
+  font-size:0.95rem;
+  box-shadow: 0 6px 18px rgba(107,33,168,0.14);
+}
+
+/* Contenedor de asignaturas (vertical) */
+.asignaturas-list{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+/* Cada asignatura: cuadro clicable */
+.asignatura{
+  background: var(--white);
+  border-radius:10px;
+  padding:10px;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  cursor:pointer;
+  border: 2px solid rgba(0,0,0,0.03);
+  transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+  user-select: none;
+  box-shadow: 0 4px 10px rgba(10,8,12,0.04);
+}
+.asignatura:hover{ transform: translateY(-4px); box-shadow: 0 10px 22px rgba(15,10,20,0.08); }
+
+/* Nombre grande y número */
+.asignatura .meta{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:8px;
+}
+.asignatura .nombre{
+  font-weight:700;
+  font-size:0.95rem;
+  color:var(--text);
+}
+.asignatura .id{
+  background: linear-gradient(90deg,var(--violet-3),transparent);
+  padding:4px 8px;
+  border-radius:8px;
+  font-size:0.8rem;
+  color:#2b0b66;
+  font-weight:700;
+}
+
+/* correlativas en pequeño */
+.asignatura .correlativas{
+  font-size:0.78rem;
+  color: var(--muted);
+}
+
+/* Estados */
+/* Aprobada */
+.asignatura.aprobada{
+  background: linear-gradient(180deg, rgba(165,122,255,0.12), rgba(165,122,255,0.06));
+  border: 2px solid rgba(123,44,191,0.35);
+  box-shadow: 0 8px 24px rgba(123,44,191,0.08);
+}
+.asignatura.aprobada .nombre{ color: #3b0764; }
+
+/* Bloqueada (correlativas no cumplidas) */
+.asignatura.bloqueada{
+  opacity:0.55;
+  cursor:not-allowed;
+  transform: none !important;
+}
+.asignatura.bloqueada:hover{ box-shadow:none; }
+
+/* Etiqueta pequeña */
+.tag{
+  display:inline-block;
+  font-size:0.75rem;
+  padding:4px 6px;
+  border-radius:6px;
+  background: rgba(107,33,168,0.08);
+  color: #3b0764;
+  font-weight:600;
+}
+
+/* Footer pequeño */
+footer{ margin-top:16px; color:var(--muted); font-size:0.82rem; }
+
+/* Responsive */
+@media (max-width:720px){
+  .malla-container{ gap:12px; padding-bottom:22px; }
+  .ciclo { min-width:200px; }
+  .controls{ flex-wrap:wrap; gap:6px; }
+}
 
